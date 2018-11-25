@@ -110,7 +110,8 @@
                     cyline.$('edge').style({'width': 4,'line-color': 'white',
                                             'target-arrow-shape': 'triangle',
                                             'target-arrow-color': 'white',
-                                            'line-color': 'white'});
+                                            'line-color': 'white',
+                                            'z-index': 1});
                     cyline.$('node').style({'border-color': 'black', 'border-width': 4, 'background-color': 'black', 'color': 'white'});
 
                     for(var i=1; i<=59; i++){
@@ -120,7 +121,7 @@
                     }
 
                     cyline.$("#smcenter")
-                        .style({'background-color': '#F4D03F', 'border-color': '#616A6B', 'border-width': 4, 'color': '#3498DB'});
+                        .style({'background-color': '#F4D03F', 'border-color': '#616A6B', 'border-width': 8, 'color': '#3498DB'});
 
                     
 
@@ -143,17 +144,20 @@
                         .style({'line-color': '#A569BD', 'width': 12,
                                 'target-arrow-shape': 'triangle',
                                 'target-arrow-color': '#A569BD',
-                                'line-color': '#A569BD'});
+                                'line-color': '#A569BD',
+                                'z-index': 4});
                     cyline.$(minslineid)
                         .style({'line-color': '#27AE60', 'width': 24,
                                 'target-arrow-shape': 'triangle',
                                 'target-arrow-color': '#27AE60',
-                                'line-color': '#27AE60'});
+                                'line-color': '#27AE60',
+                                'z-index': 3});
                     cyline.$(hourslineid)
                         .style({'line-color': '#E74C3C  ', 'width': 36, 
                                 'target-arrow-shape': 'triangle',
                                 'target-arrow-color': '#E74C3C  ',
-                                'line-color': '#E74C3C  '});
+                                'line-color': '#E74C3C  ',
+                                'z-index': 2});
                     
                     if(secnds%5==0){
                         cyline.$(secndsid)
