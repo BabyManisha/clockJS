@@ -36,38 +36,23 @@
 
         <p>It's My TIME!!..... :) :)</p>
 
-        <!-- <canvas id="myCanvas" width="400" height="200"></canvas>
-
-        <svg width="500" height="210" class="line-svg">
-            <line class="line-class" x1="0" y1="0" x2="200" y2="200" />
-        </svg> -->
-
         <div id="cyline"></div>
-        <!-- <div id="cy"></div> -->
         
-        <script>
-            // for Canvas....
-            // var canvas = document.getElementById("myCanvas");
-            // var ctx = canvas.getContext("2d");
-            // ctx.moveTo(0,0);
-            // ctx.lineTo(200,100);
-            // ctx.stroke();
-        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.20/cytoscape.min.js"></script>
         <script>
-                // for Cytoscape....
-                // var cy = cytoscape({
-                //     container: document.getElementById('cy')
-                // });
                 var cyline = cytoscape({
                     container: document.getElementById('cyline'),
                     style: [
                             {
                                 selector: 'node',
                                 style: {
-                                    'background-color': 'darkgray'
-                                    // 'label': 'h',
-                                    // 'text-valign': i
+                                    'background-color': 'darkgray',
+                                    'width': 100,
+                                    'height': 100,
+                                    'font-size': '60px',
+                                    'text-valign': 'center',
+                                    'text-halign': 'center',
+                                    'font-weight': 'bold',
                                 }
                             },
                             {
@@ -89,102 +74,108 @@
                         data: { id: 'smcenter'}
                         }
                     );
-                    cyline.$('#smcenter').style({'label': 'Clock', 'text-valign': 'center', 'text-halign': 'center', 'color': 'white', 'font-size': '10px'})
+                    cyline.$('#smcenter').style({'label': 'SM','color': 'white', 'font-size':'40px'});
 
-                    // For Hours-12
+                    // For Minutes-60
                     cyline.add({
-                        data: { id: 'hour-12'}
+                        data: { id: 'mins-60'}
                         }
                     );
                     cyline.add({
                         data: {
-                            id: 'line-12',
+                            id: 'line-60',
                             source: 'smcenter',
-                            target: 'hour-12'
+                            target: 'mins-60'
                         }
                     });
-                    cyline.$('#hour-12').style({'label': '12', 'text-valign': 'center', 'text-halign': 'center'})
+                    cyline.$('#mins-60').style({'label': '12'});
 
-                    // For Hours
-                    for (var i = 1; i <= 11; i++) {
+                    for (var j = 1; j <= 59; j++) {
                         cyline.add({
-                            data: { id: 'hour-' + i }
+                            data: { id: 'mins-' + j }
                             }
                         );
-                        var target = 'hour-' + i;
+                        var target = 'mins-' + j;
                         cyline.add({
                             data: {
-                                id: 'line-' + i,
+                                id: 'line-' + j,
                                 source: 'smcenter',
                                 target: target
                             }
                         });
-                        cyline.$('#hour-'+i).style({'label': i, 'text-valign': 'center', 'text-halign': 'center'})
+                        if(j%5==0){
+                            let k = j / 5 ;
+                            cyline.$('#mins-'+j).style({'label': k})
+                        }else{
+                            cyline.$('#mins-'+j).style({'background-color': 'white'})
+                        }
+                        
                     }
-
-                    // cyline.$("#smcenter")
-                    //     .style('background-color', 'white');
-
-                    // cyline.$("#line-10")
-                    //     .style('line-color', 'red');
 
                 }
 
                 function setTimeLine(){
-                    cyline.$('edge').style({'width': 2,'line-color': 'white',
+                    cyline.$('edge').style({'width': 4,'line-color': 'white',
                                             'target-arrow-shape': 'triangle',
                                             'target-arrow-color': 'white',
                                             'line-color': 'white'});
-                    cyline.$('node').style({'border-color': 'darkgray', 'border-width': 1, 'background-color': 'white', 'color': 'black'});
+                    cyline.$('node').style({'border-color': 'black', 'border-width': 4, 'background-color': 'white', 'color': 'black'});
+
+                    for(var i=1; i<=59; i++){
+                        if(i%5!=0){
+                            cyline.$('#mins-'+i).style({'border-color': 'white', 'border-width': 4, 'background-color': 'white'})
+                        }
+                    }
 
                     cyline.$("#smcenter")
-                        .style({'background-color': '#F4D03F', 'border-color': '#616A6B', 'border-width': 1, 'color': '#3498DB'});
+                        .style({'background-color': '#F4D03F', 'border-color': '#616A6B', 'border-width': 4, 'color': '#3498DB'});
+
+                    
+
+                    var mins = new Date().getMinutes() || 60;
+
+                    var secnds = new Date().getSeconds() || 60;
 
                     var hours = new Date().getHours();
-                    hours = ((hours + 11) % 12 + 1);
-
-                    var mins = new Date().getMinutes();
-                    mins = Math.round(mins/5);
-                    mins = mins || 1;
-
-                    var secnds = new Date().getSeconds();
-                    secnds = Math.round(secnds/5);
-                    secnds = secnds || 1;
-
-                    var mins = new Date().getMinutes();
-
-                    var secnds = new Date().getSeconds();
+                    hours = (((hours + 11) % 12 + 1) * 5) + Math.round(mins/12);
 
                     var secndslineid = '#line-'+secnds;
                     var minslineid = '#line-'+mins;
                     var hourslineid = '#line-'+hours;
 
-                    var secndsid = '#hour-'+secnds;
-                    var minsid = '#hour-'+mins;
-                    var hoursid = '#hour-'+hours;
+                    var hoursid = '#mins-'+hours;
+                    var minsid = '#mins-'+mins;
+                    var secndsid = '#mins-'+secnds;
 
                     cyline.$(secndslineid)
-                        .style({'line-color': '#A569BD', 'width': 2,
+                        .style({'line-color': '#A569BD', 'width': 12,
                                 'target-arrow-shape': 'triangle',
                                 'target-arrow-color': '#A569BD',
                                 'line-color': '#A569BD'});
                     cyline.$(minslineid)
-                        .style({'line-color': '#27AE60', 'width': 3,
+                        .style({'line-color': '#27AE60', 'width': 24,
                                 'target-arrow-shape': 'triangle',
                                 'target-arrow-color': '#27AE60',
                                 'line-color': '#27AE60'});
                     cyline.$(hourslineid)
-                        .style({'line-color': '#E74C3C  ', 'width': 4, 
+                        .style({'line-color': '#E74C3C  ', 'width': 36, 
                                 'target-arrow-shape': 'triangle',
                                 'target-arrow-color': '#E74C3C  ',
                                 'line-color': '#E74C3C  '});
-
-                    cyline.$(secndsid)
-                        .style({'background-color': '#A569BD', 'color': 'white'});
-                    cyline.$(minsid)
-                        .style({'background-color': '#27AE60', 'color': 'white'});
-                    cyline.$(hoursid)
-                        .style({'background-color': '#E74C3C  ', 'color': 'white'});
+                    
+                    if(secnds%5==0){
+                        cyline.$(secndsid)
+                            .style({'background-color': '#A569BD', 'color': 'white'});
+                    }
+                    if(mins%5==0){
+                        cyline.$(minsid)
+                            .style({'background-color': '#27AE60', 'color': 'white'});
+                    }
+                    if(hours%5==0){
+                        cyline.$(hoursid)
+                            .style({'background-color': '#E74C3C  ', 'color': 'white'});
+                    }
+                    
                 }
                 
                 function initializeClock(){
@@ -200,7 +191,7 @@
 
                 setInterval(function(){ 
                     setTimeLine();
-                }, 3000);
+                }, 1000);
 
             </script>
     </body>
