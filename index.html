@@ -45,6 +45,7 @@
                                     'text-valign': 'center',
                                     'text-halign': 'center',
                                     'font-weight': 'bold',
+                                    'z-index': 1
                                 }
                             },
                             {
@@ -54,7 +55,8 @@
                                     'line-color': 'white',
                                     'target-arrow-color': '#808000',
                                     'target-arrow-shape': 'triangle',
-                                    'curve-style': 'bezier'
+                                    'curve-style': 'bezier',
+                                    'z-index': 1
                                 }
                             }
                         ]
@@ -99,7 +101,7 @@
                             let k = j / 5 ;
                             cyline.$('#mins-'+j).style({'label': k})
                         }else{
-                            cyline.$('#mins-'+j).style({'background-color': 'white'})
+                            cyline.$('#mins-'+j).style({'background-color': 'white', 'z-index': 1})
                         }
                         
                     }
@@ -112,16 +114,16 @@
                                             'target-arrow-color': 'white',
                                             'line-color': 'white',
                                             'z-index': 1});
-                    cyline.$('node').style({'border-color': 'black', 'border-width': 4, 'background-color': 'black', 'color': 'white'});
+                    cyline.$('node').style({'border-color': 'black', 'border-width': 4, 'background-color': 'black', 'color': 'white', 'z-index': 1});
 
                     for(var i=1; i<=59; i++){
                         if(i%5!=0){
-                            cyline.$('#mins-'+i).style({'border-color': 'white', 'border-width': 4, 'background-color': 'white'})
+                            cyline.$('#mins-'+i).style({'border-color': 'white', 'border-width': 4, 'background-color': 'white', 'z-index': 1})
                         }
                     }
 
                     cyline.$("#smcenter")
-                        .style({'background-color': '#F4D03F', 'border-color': '#616A6B', 'border-width': 8, 'color': '#3498DB'});
+                        .style({'background-color': '#F4D03F', 'border-color': '#616A6B', 'border-width': 8, 'color': '#3498DB', 'z-index': 5});
 
                     
 
