@@ -7,6 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SM Clock</title>
         <style>
+            body{
+                background-color: white;
+            }
             #cyline {
                 width: 100%;
                 height: 100%;
@@ -100,7 +103,7 @@
                                             'target-arrow-shape': 'triangle',
                                             'target-arrow-color': 'white',
                                             'line-color': 'white'});
-                    cyline.$('node').style({'border-color': 'black', 'border-width': 4, 'background-color': 'white', 'color': 'black'});
+                    cyline.$('node').style({'border-color': 'black', 'border-width': 4, 'background-color': 'black', 'color': 'white'});
 
                     for(var i=1; i<=59; i++){
                         if(i%5!=0){
@@ -146,15 +149,15 @@
                     
                     if(secnds%5==0){
                         cyline.$(secndsid)
-                            .style({'background-color': '#A569BD', 'color': 'white'});
+                            .style({'background-color': '#A569BD', 'color': 'black'});
                     }
                     if(mins%5==0){
                         cyline.$(minsid)
-                            .style({'background-color': '#27AE60', 'color': 'white'});
+                            .style({'background-color': '#27AE60', 'color': 'black'});
                     }
                     if(hours%5==0){
                         cyline.$(hoursid)
-                            .style({'background-color': '#E74C3C  ', 'color': 'white'});
+                            .style({'background-color': '#E74C3C  ', 'color': 'black'});
                     }
                     
                 }
