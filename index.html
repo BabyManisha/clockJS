@@ -1,27 +1,12 @@
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8">
-        <title>My Graphs</title>
-        <link rel="stylesheet" href="">
-
+        <meta name="description" content="Clock">
+        <meta name="keywords" content="HTML,CSS,JavaScript,CYTOSCOPE">
+        <meta name="author" content="BabyManisha.Sunkara">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SM Clock</title>
         <style>
-            .line-svg{
-                background-color: yellowgreen;
-            }
-            .line-class{
-                stroke: black;
-                stroke-width: 2
-            }
-            #myCanvas{
-                border: 1px solid red;
-            }
-            #cy {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-            }
             #cyline {
                 width: 100%;
                 height: 100%;
@@ -30,15 +15,11 @@
                 left: 0px;
             }
         </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.20/cytoscape.min.js"></script>
     </head>
     <body>
-        <h1>Welcome to my Graphs....</h1>
-
-        <p>It's My TIME!!..... :) :)</p>
-
         <div id="cyline"></div>
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.20/cytoscape.min.js"></script>
         <script>
                 var cyline = cytoscape({
                     container: document.getElementById('cyline'),
